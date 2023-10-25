@@ -78,8 +78,8 @@ class _HomeState extends State<Home> {
                       width: 50,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text('User',style: TextStyle(
                         color: Colors.black,
                         fontSize: 25,
