@@ -8,12 +8,8 @@ import '../models/userModel.dart';
 class GoogleSignInProvider extends ChangeNotifier{
   final googleSignIn = GoogleSignIn();
   FirebaseAuth auth = FirebaseAuth.instance;
-  GoogleSignInAccount? _user;
-  //GoogleSignInAccount get user => _user!;
 
   UserModel? _userFromFirebaseUser(User? user) {
-    print(user!.uid);
-    print(user.displayName);
     return user != null ? UserModel(id: user.uid,name: user.displayName) : null;
   }
 
@@ -22,7 +18,6 @@ class GoogleSignInProvider extends ChangeNotifier{
   Future googleLogin() async{
     final googleUser = await googleSignIn.signIn();
     if(googleUser == null)return;
-    _user = googleUser;
 
     final googleAuth = await googleUser.authentication;
     final credential = GoogleAuthProvider.credential(
