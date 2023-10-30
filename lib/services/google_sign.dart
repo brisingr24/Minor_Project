@@ -13,9 +13,28 @@ class GoogleSignInProvider extends ChangeNotifier{
     return user != null ? UserModel(id: user.uid,name: user.displayName) : null;
   }
 
+  Stream<UserModel?> get user {
+    return auth.authStateChanges().map(_userFromFirebaseUser);
+  }
   Stream<User?> get authState => FirebaseAuth.instance.authStateChanges();
 
   Future googleLogin() async{
+    final googleUser = await googleSignIn.signIn();
+    if(googleUser == null)return;
+
+    final googleAuth = await googleUser.authentication;
+    final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken
+    );
+
+    var res = await FirebaseAuth.instance.signInWithCredential(credential);
+    notifyListeners();
+    var currentUser = res.user;
+    return _userFromFirebaseUser(currentUser);
+  }
+
+  Future googleSignUp() async{
     final googleUser = await googleSignIn.signIn();
     if(googleUser == null)return;
 

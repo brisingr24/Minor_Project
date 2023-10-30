@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'auth/register.dart';
+import 'models/userModel.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,9 +53,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Splash(),
+    return StreamProvider<UserModel?>.value(
+      value: GoogleSignInProvider().user,
+      initialData: UserModel(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Splash(),
+        supportedLocales: [Locale('en', 'IN')],
+      ),
     );
   }
 }

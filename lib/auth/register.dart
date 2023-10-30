@@ -35,8 +35,8 @@ class _RegisterState extends State<Register> {
                   Text('Welcome Back',style: TextStyle(fontSize: 40,color: Colors.white),),
                   SizedBox(height: 50,),
                   ElevatedButton.icon(
-                      style:ElevatedButton.styleFrom(primary: Colors.white,
-                          onPrimary: Colors.black,
+                      style:ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
                           minimumSize: Size(double.infinity,50)),
                       onPressed: () async {
                         final provider = Provider.of<GoogleSignInProvider>(
@@ -48,7 +48,23 @@ class _RegisterState extends State<Register> {
                         //provider.change();
                       },
                       icon: Icon(Icons.login),
-                      label: const Text("Sign In with Google")),
+                      label: const Text("Log In with Google")),
+                  SizedBox(height: 20,),
+                  ElevatedButton.icon(
+                      style:ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      minimumSize: Size(double.infinity,50)),
+                      onPressed: () async {
+                        final provider = Provider.of<GoogleSignInProvider>(
+                            context,
+                            listen: false);
+                        provider.googleSignUp();
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => Wrapper()));
+                        //provider.change();
+                      },
+                      icon: Icon(Icons.login,color: Colors.black,),
+                      label: const Text("Sign Up with Google",style: TextStyle(color: Colors.black),)),
                 ],
               ),
             )
