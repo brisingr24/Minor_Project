@@ -9,7 +9,6 @@ import '../widgets/moodWidget.dart';
 import '../widgets/mood_quote.dart';
 import '../services/google_sign.dart';
 import '../services/quote_api.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.uid});
@@ -38,26 +37,39 @@ class _HomeState extends State<Home> {
   }
 
   final user = FirebaseAuth.instance.currentUser!;
+  final GoogleSignInProvider _auth = GoogleSignInProvider();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Center(child: Text("Home"),),
-        actions: [
-          IconButton(onPressed: () async {
-            final provider =
-            Provider.of<GoogleSignInProvider>(context, listen: false);
-            provider.logOut();
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Register(),
+        backgroundColor: Color(0xFFFFD1D1),
+        title: const Text(
+          "Home",
+          style: TextStyle(
+              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25),
+        ),
+        actions: <Widget>[
+          TextButton.icon(
+              label: const Text(
+                "Sign Out",
+                style: TextStyle(color: Colors.black),
               ),
-                  (route) => false,
-            );
-          }, icon: Icon(Icons.logout))
+              icon: const Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              onPressed: () async {
+                _auth.logOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Register(),
+                  ),
+                      (route) => false,
+                );
+              })
         ],
       ),
       body: Padding(

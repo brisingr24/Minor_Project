@@ -50,8 +50,13 @@ class _ForumState extends State<Forum> {
               ),
               onPressed: () async {
                 _auth.logOut();
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) =>Register()));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Register(),
+                  ),
+                      (route) => false,
+                );
               })
         ],
       ),

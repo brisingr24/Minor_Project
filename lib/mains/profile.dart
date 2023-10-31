@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
 import '../profile_pages/booking_pages/appointments.dart';
 import '../profile_pages/edit_profile.dart';
+import '../profile_pages/journal_pages/journal.dart';
 import '../services/user_service.dart';
-
 
 class Profile extends StatefulWidget {
   final String uid;
@@ -72,18 +72,18 @@ class _ProfileState extends State<Profile> {
                             children: [
                               user.profileImgURL == null
                                   ? CircleAvatar(
-                                child: Image.asset(
-                                  "images/userdef.png",
-                                ),
-                                radius: 60,
-                                backgroundColor: Colors.white,
-                              )
+                                      radius: 60,
+                                      backgroundColor: Colors.white,
+                                      child: Image.asset(
+                                        "images/userdef.png",
+                                      ),
+                                    )
                                   : CircleAvatar(
-                                radius: 80,
-                                backgroundImage: NetworkImage(
-                                  user.profileImgURL ?? ' ',
-                                ),
-                              ),
+                                      radius: 80,
+                                      backgroundImage: NetworkImage(
+                                        user.profileImgURL ?? ' ',
+                                      ),
+                                    ),
                               SizedBox(
                                 height: 10,
                               ),
@@ -99,30 +99,30 @@ class _ProfileState extends State<Profile> {
                                 children: [
                                   user.age != null
                                       ? Text(
-                                    '${user.age} years |',
-                                    style: TextStyle(fontSize: 18),
-                                  )
+                                          '${user.age} years |',
+                                          style: TextStyle(fontSize: 18),
+                                        )
                                       : SizedBox(
-                                    width: 1,
-                                  ),
+                                          width: 1,
+                                        ),
                                   user.gender != null
                                       ? Text(
-                                    '${user.gender}',
-                                    style: TextStyle(fontSize: 18),
-                                  )
+                                          '${user.gender}',
+                                          style: TextStyle(fontSize: 18),
+                                        )
                                       : SizedBox(
-                                    width: 1,
-                                  ),
+                                          width: 1,
+                                        ),
                                 ],
                               ),
                               user.city != null
                                   ? Text(
-                                '${user.city}',
-                                style: TextStyle(fontSize: 18),
-                              )
+                                      '${user.city}',
+                                      style: TextStyle(fontSize: 18),
+                                    )
                                   : SizedBox(
-                                height: 1,
-                              ),
+                                      height: 1,
+                                    ),
                             ],
                           );
                         }
@@ -233,7 +233,7 @@ class _ProfileState extends State<Profile> {
                                         color: Colors.white,
                                         border: Border.all(color: Colors.black),
                                         borderRadius:
-                                        BorderRadius.circular(10.0),
+                                            BorderRadius.circular(10.0),
                                       ),
                                       height: 100,
                                       width: 250,
@@ -241,9 +241,9 @@ class _ProfileState extends State<Profile> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Column(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "Name: ${data2!["name"]}",
@@ -299,6 +299,50 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
+                    Container(
+                        height: 50,
+                        width: 330,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Whats on your mind today?",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Journal(widget.uid)),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 27,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
                   ],
                 ),
               ),
@@ -310,6 +354,6 @@ class _ProfileState extends State<Profile> {
   }
 
   Widget loadingView() => Center(
-    child: CircularProgressIndicator(),
-  );
+        child: CircularProgressIndicator(),
+      );
 }
