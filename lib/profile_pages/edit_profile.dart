@@ -22,7 +22,6 @@ class _EditProfileState extends State<EditProfile> {
   String city = "";
   String age = "";
   String gender = "";
-  String phone = "";
 
   Future getImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -116,14 +115,14 @@ class _EditProfileState extends State<EditProfile> {
                 child: TextFormField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFFFD1D1))),
+                          borderSide: BorderSide(color: Colors.black)),
                       hintText: "Enter City",
                       labelText: "city",
                       prefixIcon: Icon(
                         Icons.location_city,
                       ),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFFF9494)))),
+                          borderSide: BorderSide(color: Colors.black))),
                   onChanged: (val) => setState(() {
                     city = val;
                   }),
@@ -158,23 +157,6 @@ class _EditProfileState extends State<EditProfile> {
                     gender = val;
                   }),
                   keyboardType: TextInputType.name,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Enter Phone No.",
-                    labelText: "Phone",
-                    prefixIcon: Icon(
-                      Icons.phone,
-                    ),
-                  ),
-                  onChanged: (val) => setState(() {
-                    phone = val;
-                  }),
-                  keyboardType: TextInputType.phone,
                 ),
               ),
             ],

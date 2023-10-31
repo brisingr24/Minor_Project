@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project/services/utils_serivce.dart';
-
 import '../models/userModel.dart';
 
 class UserService{
@@ -16,6 +15,7 @@ class UserService{
       id: snapshot.id,
       profileImgURL: snapshot.data()['profileImgURL'],
       name: snapshot.data()['name'],
+      email: snapshot.data()['email'],
       city: snapshot.data()['city'],
       age: snapshot.data()['age'],
       gender: snapshot.data()['gender'],
@@ -33,7 +33,6 @@ class UserService{
   }
 
   Future <void> updateProfile (String name,String city,String age,String gender) async {
-
 
     Map<String,Object> data = HashMap();
     if (name != '') data['name'] = name;

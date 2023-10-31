@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
+import '../profile_pages/booking_pages/appointments.dart';
 import '../profile_pages/edit_profile.dart';
 import '../services/user_service.dart';
+
 
 class Profile extends StatefulWidget {
   final String uid;
@@ -185,6 +188,114 @@ class _ProfileState extends State<Profile> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "My Bookings",
+                          style: TextStyle(fontSize: 20),
+                        )),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    StreamBuilder<UserModel?>(
+                        stream: UserService().getUserInfo(widget.uid),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(
+                                child: Text("Book Your First Appointment!"));
+                          }
+                          var data = snapshot.data;
+                          if (data == null) {
+                            return Center(child: Text("No data"));
+                          }
+
+                          if (data.booked == true) {
+                            return StreamBuilder<DocumentSnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection("doctor")
+                                  .doc(data.docID)
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                if (snapshot.hasData) {
+                                  var data2 = snapshot.data;
+                                  return Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(color: Colors.black),
+                                        borderRadius:
+                                        BorderRadius.circular(10.0),
+                                      ),
+                                      height: 100,
+                                      width: 250,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Name: ${data2!["name"]}",
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            Text(
+                                              "Profession: ${data2["job"]}",
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return Text(
+                                  "There's No Bookings yet!",
+                                  style: TextStyle(
+                                      fontSize: 15, color: Colors.black54),
+                                );
+                              },
+                            );
+                          } else {
+                            return Center(
+                                child: Text("Book Your First Appointment!"));
+                          }
+                        }),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Appointment(uid: widget.uid)));
+                        },
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(6.0),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color(0xFFFF9494))),
+                        child: Text("Book Therapists")),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "My Journal",
+                          style: TextStyle(fontSize: 20),
+                        )),
                     SizedBox(
                       height: 30,
                     ),

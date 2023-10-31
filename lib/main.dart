@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project/pre_auth/landing.dart';
 import 'package:project/pre_auth/splash.dart';
 import 'package:project/pre_auth/wrapper.dart';
 import 'package:project/services/google_sign.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'auth/register.dart';
 import 'models/userModel.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +20,6 @@ Future main() async {
     ),
   );
 }
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -59,7 +56,15 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Splash(),
-        supportedLocales: [Locale('en', 'IN')],
+        routes: {
+          '/wrapper': (context) => Wrapper(),
+        },
+        localizationsDelegates: [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('en', 'IN')],
       ),
     );
   }
