@@ -30,21 +30,23 @@ class _HomeState extends State<Explore> {
     final GoogleSignInProvider _auth = GoogleSignInProvider();
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFFD1D1),
-        title: Text(
+        backgroundColor: Color(0xFFFFF5E4),
+        title: const Text(
           "Explore",
           style: TextStyle(
-              color: Colors.black, fontFamily: 'Pacifico', fontSize: 22),
+              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25,fontWeight: FontWeight.w600),
         ),
         actions: <Widget>[
           TextButton.icon(
               label: const Text(
-                "Sign Out",
-                style: TextStyle(color: Colors.black),
+                "Log Out",
+                style: TextStyle(color: Colors.black,fontSize: 16),
               ),
-              icon: Icon(
-                Icons.person,
+              icon: const Icon(
+                Icons.logout,
                 color: Colors.black,
               ),
               onPressed: () async {

@@ -31,21 +31,23 @@ class _ForumState extends State<Forum> {
     return Scaffold(
       backgroundColor: Color(0xFFFFF5E4),
       appBar: AppBar(
+        toolbarHeight: 80,
+        elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFFD1D1),
-        title: Text(
+        backgroundColor: Color(0xFFFFF5E4),
+        title: const Text(
           "Forum",
           style: TextStyle(
-              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25),
+              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25,fontWeight: FontWeight.w600),
         ),
         actions: <Widget>[
           TextButton.icon(
               label: const Text(
-                "Sign Out",
-                style: TextStyle(color: Colors.black),
+                "Log Out",
+                style: TextStyle(color: Colors.black,fontSize: 16),
               ),
-              icon: Icon(
-                Icons.person,
+              icon: const Icon(
+                Icons.logout,
                 color: Colors.black,
               ),
               onPressed: () async {
@@ -77,12 +79,12 @@ class _ForumState extends State<Forum> {
                       children: [
                         user.profileImgURL == null
                             ? CircleAvatar(
+                          backgroundColor: Colors.white,
                           child: Image.asset(
                             "images/userdef.png",
                             height: 50,
                             width: 50,
                           ),
-                          backgroundColor: Colors.white,
                         )
                             : CircleAvatar(
                           radius: 30,
@@ -105,13 +107,6 @@ class _ForumState extends State<Forum> {
                           alignment: Alignment.centerLeft,
                           child: ElevatedButton(
                               onPressed: _callNumber,
-                              child: const Text(
-                                "Panic",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
                               style: ButtonStyle(
                                   backgroundColor:
                                   MaterialStateProperty.all(Colors.black),
@@ -121,7 +116,14 @@ class _ForumState extends State<Forum> {
                                       RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(18.0),
-                                      )))),
+                                      ))),
+                              child: const Text(
+                                "Panic",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              )),
                         ),
                       ],
                     );
@@ -157,13 +159,6 @@ class _ForumState extends State<Forum> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => postAdd()));
                       },
-                      child: Text(
-                        "Add a new post",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13.5,
-                            fontFamily: "Peralta"),
-                      ),
                       style: ButtonStyle(
                           elevation: MaterialStateProperty.all(6.0),
                           backgroundColor:
@@ -174,7 +169,14 @@ class _ForumState extends State<Forum> {
                           MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
-                              )))),
+                              ))),
+                      child: Text(
+                        "Add a new post",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 13.5,
+                            fontFamily: "Peralta"),
+                      )),
                 ),
               ),
             ),

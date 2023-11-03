@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/pre_auth/splash.dart';
 import 'package:project/pre_auth/wrapper.dart';
 import 'package:project/services/google_sign.dart';
-import 'package:project/testt.dart';
+import 'package:project/pre_auth/landing.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'models/userModel.dart';

@@ -27,17 +27,8 @@ class _JournalState extends State<Journal> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "My Notes",
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w300,
-                      fontFamily: 'peralta'),
-                )),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(

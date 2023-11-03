@@ -21,7 +21,7 @@ Widget JournCard(Function()? onTap, QueryDocumentSnapshot doc) {
                   style: const TextStyle(
                       fontFamily: 'secular',
                       fontSize: 20,
-                      fontWeight: FontWeight.w300))),
+                      fontWeight: FontWeight.w400))),
           const SizedBox(
             height: 70,
           ),
@@ -31,7 +31,7 @@ Widget JournCard(Function()? onTap, QueryDocumentSnapshot doc) {
                   style: const TextStyle(
                       fontFamily: 'secular',
                       fontSize: 16,
-                      fontWeight: FontWeight.w100))),
+                      fontWeight: FontWeight.w300))),
         ],
       ),
     ),

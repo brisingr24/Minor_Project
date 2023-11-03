@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:project/pre_auth/wrapper.dart';
-
+import 'package:project/pre_auth/landing.dart';
 import '../models/shared_pref.dart';
-import 'landing.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -46,10 +45,10 @@ class _SplashState extends State<Splash> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
+          SizedBox(
             height: 300,
             width: 300,
-            child: Image.asset("images/2 emoji.png"),
+            child: Image.asset("images/calm_girl.gif"),
           ),
           const SizedBox(height: 25),
           DefaultTextStyle(

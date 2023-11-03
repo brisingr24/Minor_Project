@@ -51,22 +51,22 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 2,
+        elevation: 3,
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFFadeff7),
         title: const Text(
           "Home",
           style: TextStyle(
-              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25),
+              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25,fontWeight: FontWeight.w600),
         ),
         actions: <Widget>[
           TextButton.icon(
               label: const Text(
-                "Sign Out",
-                style: TextStyle(color: Colors.black),
+                "Log Out",
+                style: TextStyle(color: Colors.black,fontSize: 16),
               ),
               icon: const Icon(
-                Icons.person,
+                Icons.logout,
                 color: Colors.black,
               ),
               onPressed: () async {
@@ -173,6 +173,15 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: (() {
+                            // if (index == 0) {
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => Testt(),
+                            //     ),
+                            //   );
+                            // }
+                            // else
                             if (index == 1) {
                               Navigator.push(
                                 context,
@@ -181,6 +190,15 @@ class _HomeState extends State<Home> {
                                 ),
                               );
                             }
+                            // else
+                            // if (index == 2) {
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => (widget.uid),
+                            //     ),
+                            //   );
+                            // }
                           }),
                           child: CategoryItem(
                               item: navItem[index],

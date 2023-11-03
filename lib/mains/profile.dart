@@ -21,7 +21,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Align(
           alignment: Alignment.center,
@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 32,
-                    fontWeight: FontWeight.w300),
+                    fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 20),
               Stack(children: [
@@ -343,6 +343,9 @@ class _ProfileState extends State<Profile> {
                             ),
                           ],
                         )),
+                    SizedBox(
+                      height: 30,
+                    ),
                   ],
                 ),
               ),
