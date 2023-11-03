@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:project/profile_pages/journal_pages/journal.dart';
 import '../auth/register.dart';
+import '../models/userModel.dart';
+import '../services/user_service.dart';
 import '../widgets/category_widget.dart';
 import '../models/quoteModel.dart';
 import '../widgets/moodWidget.dart';
@@ -18,7 +21,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   String quoteImage = "images/thought_placeholder.png";
   String? _category;
   QuotesApi quotesApi = QuotesApi();
@@ -28,7 +30,12 @@ class _HomeState extends State<Home> {
     'Self Care',
     'My Journal ',
     'My Therapist',
-    'My Music'
+  ];
+
+  List<String> navImg = [
+    'images/self_care.png',
+    'images/journ.png',
+    'images/myDoc.png',
   ];
 
   _callNumber() async {
@@ -42,9 +49,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 2,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFFD1D1),
+        backgroundColor: Color(0xFFadeff7),
         title: const Text(
           "Home",
           style: TextStyle(
@@ -67,7 +76,7 @@ class _HomeState extends State<Home> {
                   MaterialPageRoute(
                     builder: (context) => const Register(),
                   ),
-                      (route) => false,
+                  (route) => false,
                 );
               })
         ],
@@ -80,83 +89,119 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Image.asset(
-                      "images/userdef.png",
-                      height: 50,
-                      width: 50,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('User',style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w400)),
-                  ),
-                  const Spacer(),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: ElevatedButton(
-                        onPressed: _callNumber,
-                        style: ButtonStyle(
-                            elevation: MaterialStateProperty.all(6.0),
-                            backgroundColor:
-                            MaterialStateProperty.all(Colors.black),
-                            fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(80, 16)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ))),
-                        child: const Text(
-                          "Panic",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+              StreamBuilder<UserModel?>(
+                stream: UserService().getUserInfo(widget.uid),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    if (snapshot.data != null) {
+                      UserModel user = snapshot.data!;
+                      return Row(
+                        children: [
+                          user.profileImgURL == null
+                              ? CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Image.asset(
+                                    "images/userdef.png",
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                )
+                              : CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: NetworkImage(
+                                    user.profileImgURL ?? ' ',
+                                  ),
+                                ),
+                          Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: Text(
+                              '${user.name}',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w400),
+                            ),
                           ),
-                        )),
-                  ),
-                ],
+                          const Spacer(),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: ElevatedButton(
+                                onPressed: _callNumber,
+                                style: ButtonStyle(
+                                    elevation: MaterialStateProperty.all(6.0),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.black),
+                                    fixedSize: MaterialStateProperty.all<Size>(
+                                        const Size(80, 16)),
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    ))),
+                                child: const Text(
+                                  "Panic",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                )),
+                          ),
+                        ],
+                      );
+                    }
+                  }
+                  return const Center();
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                'Discover',
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w400),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Discover',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+                ),
               ),
               Container(
                 padding: const EdgeInsets.all(8),
-                height: 85,
+                height: 120,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: navItem.length,
+                    itemCount: 3,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: (() {
-                            print(navItem);
+                            if (index == 1) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Journal(widget.uid),
+                                ),
+                              );
+                            }
                           }),
-                          child: CategoryItem(item: navItem[index]));
+                          child: CategoryItem(
+                              item: navItem[index],
+                              img: navImg[index],
+                              index: index));
                     }),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                child: Text(
-                  'Good Morning!!!',
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: Text(
+                    'Good Morning!!!',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               const Text(
                 'How are you feeling today?',
                 style: TextStyle(fontSize: 18),
@@ -183,7 +228,7 @@ class _HomeState extends State<Home> {
                             }),
                             child: const MoodItem(
                               image: "images/1 emoji.png",
-                              moodtext: "MEH",
+                              moodtext: "BAD",
                             )),
                         InkWell(
                             onTap: (() {
@@ -196,7 +241,7 @@ class _HomeState extends State<Home> {
                             }),
                             child: const MoodItem(
                               image: "images/2 emoji.png",
-                              moodtext: "BAD",
+                              moodtext: "MEH",
                             )),
                         InkWell(
                             onTap: (() {
@@ -249,8 +294,8 @@ class _HomeState extends State<Home> {
                       if (snapshot.hasError) {
                         return Center(
                             child: AlertDialog(
-                              title: Text('${snapshot.error}'),
-                            ));
+                          title: Text('${snapshot.error}'),
+                        ));
                       } else if (snapshot.hasData) {
                         QuoteModel? quoteModel = snapshot.data as QuoteModel?;
                         // log(_category.toString()+" "+quoteModel!.category.toString());
@@ -262,12 +307,12 @@ class _HomeState extends State<Home> {
                     }
                     return const Center(
                         child: AlertDialog(
-                          alignment: Alignment.center,
-                          title: Text(
-                            "Failed to load Data",
-                            textAlign: TextAlign.center,
-                          ),
-                        ));
+                      alignment: Alignment.center,
+                      title: Text(
+                        "Failed to load Data",
+                        textAlign: TextAlign.center,
+                      ),
+                    ));
                   }),
                 ),
               ),
