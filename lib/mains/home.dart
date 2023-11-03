@@ -231,7 +231,7 @@ class _HomeState extends State<Home> {
                 visible: _ismoodvisible,
                 child: Container(
                     padding: const EdgeInsets.all(5),
-                    height: 120,
+                    height: 125,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
@@ -246,7 +246,7 @@ class _HomeState extends State<Home> {
                             }),
                             child: const MoodItem(
                               image: "images/1 emoji.png",
-                              moodtext: "BAD",
+                              moodScore: 1,
                             )),
                         InkWell(
                             onTap: (() {
@@ -259,7 +259,20 @@ class _HomeState extends State<Home> {
                             }),
                             child: const MoodItem(
                               image: "images/2 emoji.png",
-                              moodtext: "MEH",
+                              moodScore: 2,
+                            )),
+                        InkWell(
+                            onTap: (() {
+                              setState(() {
+                                _category = "courage";
+                                quoteImage = "images/mehmoodquote.jpg";
+                                _ismoodvisible = false;
+                                _isquotevisible = true;
+                              });
+                            }),
+                            child: const MoodItem(
+                              image: "images/3 emoji.png",
+                              moodScore: 3,
                             )),
                         InkWell(
                             onTap: (() {
@@ -271,8 +284,8 @@ class _HomeState extends State<Home> {
                               });
                             }),
                             child: const MoodItem(
-                              image: "images/3 emoji.png",
-                              moodtext: "GOOD",
+                              image: "images/4 emoji.png",
+                              moodScore: 4,
                             )),
                         InkWell(
                             onTap: (() {
@@ -284,8 +297,8 @@ class _HomeState extends State<Home> {
                               });
                             }),
                             child: const MoodItem(
-                              image: "images/4 emoji.png",
-                              moodtext: "NICE",
+                              image: "images/5 emoji.png",
+                              moodScore: 5,
                             )),
                       ],
                     )),
