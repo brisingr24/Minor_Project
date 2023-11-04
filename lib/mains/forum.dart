@@ -148,7 +148,7 @@ class _ForumState extends State<Forum> {
               height: 100,
               width: 400,
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: Color(0xFFadeff7),
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(20.0),
               ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MoodItem extends StatefulWidget {
-  const MoodItem({Key? key, required this.image, required this.moodScore}) : super(key: key);
+class MoodWidget extends StatefulWidget {
+  const MoodWidget({Key? key, required this.image, required this.moodScore}) : super(key: key);
   final String image;
   final int moodScore;
 
   @override
-  State<MoodItem> createState() => _MoodItemState();
+  State<MoodWidget> createState() => _MoodWidgetState();
 }
 
-class _MoodItemState extends State<MoodItem> {
+class _MoodWidgetState extends State<MoodWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(

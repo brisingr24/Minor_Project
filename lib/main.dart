@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/models/data.dart';
 import 'package:project/pre_auth/splash.dart';
 import 'package:project/pre_auth/wrapper.dart';
 import 'package:project/services/google_sign.dart';
@@ -7,15 +8,19 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'models/userModel.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Hive.initFlutter();
+  await Hive.openBox('mood_database');
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) =>GoogleSignInProvider()),
+        ChangeNotifierProvider(create: (context) => MoodData()),
       ],
       child: const MyApp(),
     ),

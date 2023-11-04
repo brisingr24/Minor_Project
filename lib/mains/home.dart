@@ -246,7 +246,7 @@ class _HomeState extends State<Home> {
                                 _isquotevisible = true;
                               });
                             }),
-                            child: const MoodItem(
+                            child: const MoodWidget(
                               image: "images/1 emoji.png",
                               moodScore: 1,
                             )),
@@ -259,7 +259,7 @@ class _HomeState extends State<Home> {
                                 _isquotevisible = true;
                               });
                             }),
-                            child: const MoodItem(
+                            child: const MoodWidget(
                               image: "images/2 emoji.png",
                               moodScore: 2,
                             )),
@@ -272,7 +272,7 @@ class _HomeState extends State<Home> {
                                 _isquotevisible = true;
                               });
                             }),
-                            child: const MoodItem(
+                            child: const MoodWidget(
                               image: "images/3 emoji.png",
                               moodScore: 3,
                             )),
@@ -285,7 +285,7 @@ class _HomeState extends State<Home> {
                                 _isquotevisible = true;
                               });
                             }),
-                            child: const MoodItem(
+                            child: const MoodWidget(
                               image: "images/4 emoji.png",
                               moodScore: 4,
                             )),
@@ -298,7 +298,7 @@ class _HomeState extends State<Home> {
                                 _isquotevisible = true;
                               });
                             }),
-                            child: const MoodItem(
+                            child: const MoodWidget(
                               image: "images/5 emoji.png",
                               moodScore: 5,
                             )),
