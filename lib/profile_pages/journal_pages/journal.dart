@@ -18,8 +18,12 @@ class _JournalState extends State<Journal> {
     return Scaffold(
       backgroundColor: Color(0xFFFFF5E4),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFF9494),
-        title: Text("MY JOURNAL"),
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+          size: 35
+        ),
+        backgroundColor: Color(0xFFFFF5E4),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -27,6 +31,7 @@ class _JournalState extends State<Journal> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(child: const Text('My Journal',style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500))),
             SizedBox(
               height: 30,
             ),

@@ -49,7 +49,7 @@ class _AppointmentState extends State<Appointment> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFFFF5E4),
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [

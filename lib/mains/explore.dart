@@ -33,7 +33,7 @@ class _HomeState extends State<Explore> {
         toolbarHeight: 80,
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFFF5E4),
+        backgroundColor: Colors.white,
         title: const Text(
           "Explore",
           style: TextStyle(
@@ -59,7 +59,7 @@ class _HomeState extends State<Explore> {
       body: Container(
         padding: EdgeInsets.all(16),
         constraints: BoxConstraints.expand(),
-        color: Color(0xFFFFF5E4),
+        color: Colors.white,
         child: Column(
           children: [
             StreamBuilder<UserModel?>(

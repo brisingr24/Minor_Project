@@ -22,8 +22,6 @@ class _BookingScreenState extends State<BookingScreen> {
   late TextEditingController _controller3;
   late TextEditingController _controller4;
 
-  //String _initialValue = '';
-
   String _valueChanged3 = '';
   String _valueToValidate3 = '';
   String _valueSaved3 = '';
@@ -35,9 +33,6 @@ class _BookingScreenState extends State<BookingScreen> {
   void initState() {
     super.initState();
     Intl.defaultLocale = 'pt_BR';
-    // _initialValue = DateTime.now().toString();
-    // _controller1 = TextEditingController(text: DateTime.now().toString());
-    // _controller2 = TextEditingController(text: DateTime.now().toString());
     _controller3 = TextEditingController(text: DateTime.now().toString());
 
     String lsHour = TimeOfDay.now().hour.toString().padLeft(2, '0');
@@ -50,7 +45,7 @@ class _BookingScreenState extends State<BookingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Book Appointment'),
-        backgroundColor: const Color(0xFFFFD1D1),
+        backgroundColor: const Color(0xffFF9494),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -60,9 +55,7 @@ class _BookingScreenState extends State<BookingScreen> {
             children: <Widget>[
               DateTimePicker(
                 type: DateTimePickerType.date,
-                //dateMask: 'yyyy/MM/dd',
                 controller: _controller3,
-                //initialValue: _initialValue,
                 firstDate: DateTime(2000),
                 lastDate: DateTime(2100),
                 icon: const Icon(Icons.event),
@@ -77,9 +70,7 @@ class _BookingScreenState extends State<BookingScreen> {
               ),
               DateTimePicker(
                 type: DateTimePickerType.time,
-                //timePickerEntryModeInput: true,
                 controller: _controller4,
-                // initialValue: '', //_initialValue,
                 icon: const Icon(Icons.access_time),
                 timeLabelText: "Time",
                 use24HourFormat: false,
@@ -166,6 +157,8 @@ class _BookingScreenState extends State<BookingScreen> {
         .update({
       "booked": true,
       "docID": widget.docID,
+      "date": _controller3.text,
+      "time": _controller4.text,
     });
     await FirebaseFirestore.instance
         .collection("users")

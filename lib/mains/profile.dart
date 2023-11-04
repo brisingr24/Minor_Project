@@ -235,7 +235,7 @@ class _ProfileState extends State<Profile> {
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                       ),
-                                      height: 100,
+                                      height: 120,
                                       width: 250,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -245,13 +245,26 @@ class _ProfileState extends State<Profile> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              "Name: ${data2!["name"]}",
-                                              style: TextStyle(fontSize: 16),
+                                            Padding(
+                                              padding: const EdgeInsets.all(4.0),
+                                              child: Text(
+                                                "Name: ${data2!["name"]}",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
                                             ),
-                                            Text(
-                                              "Profession: ${data2["job"]}",
-                                              style: TextStyle(fontSize: 16),
+                                            Padding(
+                                              padding: const EdgeInsets.all(4.0),
+                                              child: Text(
+                                                "Profession: ${data2["job"]}",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(4.0),
+                                              child: Text(
+                                                "Date: ${data.date}",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
                                             ),
                                           ],
                                         ),

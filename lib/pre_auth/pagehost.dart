@@ -92,7 +92,7 @@ class _PageHostState extends State<PageHost> {
         iconSize: 30,
         backgroundColor: Color(0xFFadeff7),
         inactiveColor: Colors.black,
-        activeColor: Colors.deepPurple.shade400,
+        activeColor: Colors.white,
         activeIndex: _currentIndex,
         splashColor: Colors.orange,
         splashSpeedInMilliseconds: 300,

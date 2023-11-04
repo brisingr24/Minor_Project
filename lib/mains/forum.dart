@@ -9,7 +9,6 @@ import '../forum_pages/post_add.dart';
 import '../forum_pages/post_display.dart';
 import '../services/user_service.dart';
 
-
 class Forum extends StatefulWidget {
   final String uid;
   const Forum({Key? key, required this.uid}) : super(key: key);
@@ -29,22 +28,25 @@ class _ForumState extends State<Forum> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xFFFFF5E4),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFFFF5E4),
+        backgroundColor: Colors.white,
         title: const Text(
           "Forum",
           style: TextStyle(
-              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25,fontWeight: FontWeight.w600),
+              color: Colors.black,
+              fontFamily: 'Pacifico',
+              fontSize: 25,
+              fontWeight: FontWeight.w600),
         ),
         actions: <Widget>[
           TextButton.icon(
               label: const Text(
                 "Log Out",
-                style: TextStyle(color: Colors.black,fontSize: 16),
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               icon: const Icon(
                 Icons.logout,
@@ -57,7 +59,7 @@ class _ForumState extends State<Forum> {
                   MaterialPageRoute(
                     builder: (context) => const Register(),
                   ),
-                      (route) => false,
+                  (route) => false,
                 );
               })
         ],
@@ -79,19 +81,19 @@ class _ForumState extends State<Forum> {
                       children: [
                         user.profileImgURL == null
                             ? CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: Image.asset(
-                            "images/userdef.png",
-                            height: 50,
-                            width: 50,
-                          ),
-                        )
+                                backgroundColor: Colors.white,
+                                child: Image.asset(
+                                  "images/userdef.png",
+                                  height: 50,
+                                  width: 50,
+                                ),
+                              )
                             : CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(
-                            user.profileImgURL ?? ' ',
-                          ),
-                        ),
+                                radius: 30,
+                                backgroundImage: NetworkImage(
+                                  user.profileImgURL ?? ' ',
+                                ),
+                              ),
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: Text(
@@ -109,14 +111,14 @@ class _ForumState extends State<Forum> {
                               onPressed: _callNumber,
                               style: ButtonStyle(
                                   backgroundColor:
-                                  MaterialStateProperty.all(Colors.black),
+                                      MaterialStateProperty.all(Colors.black),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(80, 16)),
                                   shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
+                                          RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
-                                      ))),
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  ))),
                               child: const Text(
                                 "Panic",
                                 style: TextStyle(
@@ -146,7 +148,7 @@ class _ForumState extends State<Forum> {
               height: 100,
               width: 400,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.blue.shade50,
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(20.0),
               ),
@@ -162,14 +164,14 @@ class _ForumState extends State<Forum> {
                       style: ButtonStyle(
                           elevation: MaterialStateProperty.all(6.0),
                           backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFFF9494)),
+                              MaterialStateProperty.all(Color(0xFFFF9494)),
                           fixedSize: MaterialStateProperty.all<Size>(
                               const Size(150, 20)),
                           shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ))),
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ))),
                       child: Text(
                         "Add a new post",
                         style: TextStyle(
@@ -193,7 +195,7 @@ class _ForumState extends State<Forum> {
             Expanded(
               child: SingleChildScrollView(
                   child:
-                  PostDisplay(uid: FirebaseAuth.instance.currentUser!.uid)),
+                      PostDisplay(uid: FirebaseAuth.instance.currentUser!.uid)),
             ),
           ],
         ),

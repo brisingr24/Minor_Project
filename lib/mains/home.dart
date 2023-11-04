@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:project/profile_pages/booking_pages/my_doc.dart';
 import 'package:project/profile_pages/journal_pages/journal.dart';
+import 'package:project/widgets/self_care.dart';
 import '../auth/register.dart';
 import '../models/userModel.dart';
 import '../services/user_service.dart';
@@ -173,15 +175,15 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: (() {
-                            // if (index == 0) {
-                            //   Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => Testt(),
-                            //     ),
-                            //   );
-                            // }
-                            // else
+                            if (index == 0) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SelfCare(),
+                                ),
+                              );
+                            }
+                            else
                             if (index == 1) {
                               Navigator.push(
                                 context,
@@ -190,15 +192,15 @@ class _HomeState extends State<Home> {
                                 ),
                               );
                             }
-                            // else
-                            // if (index == 2) {
-                            //   Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => (widget.uid),
-                            //     ),
-                            //   );
-                            // }
+                            else
+                            if (index == 2) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyDoc(uid: widget.uid),
+                                ),
+                              );
+                            }
                           }),
                           child: CategoryItem(
                               item: navItem[index],

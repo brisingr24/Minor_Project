@@ -35,7 +35,7 @@ class _ContactState extends State<Contact> {
           height: 400,
           width: 170,
           decoration: BoxDecoration(
-            color: const Color(0xFFFFE3E1),
+            color: Colors.blue.shade50,
             borderRadius: BorderRadius.circular(28),
           ),
           child: Padding(
@@ -45,8 +45,9 @@ class _ContactState extends State<Contact> {
                 Expanded(
                   flex: 5,
                   child: CircleAvatar(
+                    backgroundColor: Colors.blue.shade50,
                     radius: 30,
-                    child: Image.asset("images/doctor_def.jpg"),
+                    child: Image.asset("images/myDoc.png"),
                   ),
                 ),
                 Expanded(
@@ -54,7 +55,7 @@ class _ContactState extends State<Contact> {
                   child: Text(
                     "${widget.name}",
                     style: const TextStyle(
-                      fontSize: 15,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -62,7 +63,7 @@ class _ContactState extends State<Contact> {
                   flex: 3,
                   child: Text(
                     "${widget.profession}",
-                    style: const TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 15),
                   ),
                 ),
                 Row(
