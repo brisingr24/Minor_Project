@@ -26,10 +26,19 @@ class _SelfCareState extends State<SelfCare> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text('Add new expense'),
+              title: Text('Tap to add Mood!'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Row(
+                    children: [
+                      Image.asset("images/1 emoji.png",height: 40,width: 40,),
+                      Image.asset("images/2 emoji.png",height: 40,width: 40,),
+                      Image.asset("images/3 emoji.png",height: 40,width: 40,),
+                      Image.asset("images/4 emoji.png",height: 40,width: 40,),
+                      Image.asset("images/5 emoji.png",height: 40,width: 40,),
+                    ],
+                  ),
                   TextField(
                     controller: newMoodnameController,
                   ),
@@ -87,10 +96,10 @@ class _SelfCareState extends State<SelfCare> {
             iconTheme: const IconThemeData(color: Colors.black, size: 35),
           ),
           body: ListView(children: [
-            SizedBox(height: 20,),
+            SizedBox(height: 50,),
             MoodSummary(startOfWeek: value.startOfWeekDate()),
-            SizedBox(height: 20,),
-            Center(child: const Text('Mood Data in multiples of 20',style: TextStyle(fontSize: 20,color: Colors.black87),)),
+            SizedBox(height: 30,),
+            Center(child: const Text('Weekly Mood Graph',style: TextStyle(fontSize: 20,color: Colors.black87),)),
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),

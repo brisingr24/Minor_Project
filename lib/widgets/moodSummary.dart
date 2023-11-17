@@ -26,15 +26,13 @@ class MoodSummary extends StatelessWidget {
         height: 200,
         child: MyBarGraph(
           maxY: 100,
-          sunAmount: value.calculateDailyMoodSummary()[sunday] ?? 0,
           monAmount: value.calculateDailyMoodSummary()[monday] ?? 0,
           tueAmount: value.calculateDailyMoodSummary()[tuesday] ?? 0,
           wedAmount: value.calculateDailyMoodSummary()[wednesday] ?? 0,
-          thurAmount: 20,
-          //thurAmount: value.calculateDailyMoodSummary()[thursday] ?? 0,
-          friAmount: 60,
-          //friAmount: value.calculateDailyMoodSummary()[friday] ?? 0,
+          thurAmount: value.calculateDailyMoodSummary()[thursday] ?? 0,
+          friAmount: value.calculateDailyMoodSummary()[friday] ?? 0,
           satAmount: value.calculateDailyMoodSummary()[saturday] ?? 0,
+          sunAmount: value.calculateDailyMoodSummary()[sunday] ?? 0,
         ),
       )
     );

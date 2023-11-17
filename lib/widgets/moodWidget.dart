@@ -17,10 +17,8 @@ class _MoodWidgetState extends State<MoodWidget> {
           borderRadius: BorderRadius.circular(15),
           color: Colors.white,
         ),
-        width: 80,
+        width: 60,
         margin: const EdgeInsets.all(8),
-        padding: const EdgeInsets.all(16),
-        alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -29,12 +27,12 @@ class _MoodWidgetState extends State<MoodWidget> {
               backgroundColor: Colors.white,
               child: Image.asset(
                 widget.image,
-                height: 80,
-                width: 90,
+                height: 60,
+                width: 80,
               ),
             )
           ],
-          // children: [Image.asset(widget.image,height:60,fit:BoxFit.contain,)],
+          //children: [Image.asset(widget.image,)],
         ));
   }
 }

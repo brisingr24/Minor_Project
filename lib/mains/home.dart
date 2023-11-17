@@ -59,13 +59,16 @@ class _HomeState extends State<Home> {
         title: const Text(
           "Home",
           style: TextStyle(
-              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25,fontWeight: FontWeight.w600),
+              color: Colors.black,
+              fontFamily: 'Pacifico',
+              fontSize: 25,
+              fontWeight: FontWeight.w600),
         ),
         actions: <Widget>[
           TextButton.icon(
               label: const Text(
                 "Log Out",
-                style: TextStyle(color: Colors.black,fontSize: 16),
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               icon: const Icon(
                 Icons.logout,
@@ -182,18 +185,14 @@ class _HomeState extends State<Home> {
                                   builder: (context) => SelfCare(),
                                 ),
                               );
-                            }
-                            else
-                            if (index == 1) {
+                            } else if (index == 1) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Journal(widget.uid),
                                 ),
                               );
-                            }
-                            else
-                            if (index == 2) {
+                            } else if (index == 2) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -231,8 +230,7 @@ class _HomeState extends State<Home> {
               ),
               Visibility(
                 visible: _ismoodvisible,
-                child: Container(
-                    padding: const EdgeInsets.all(5),
+                child: SizedBox(
                     height: 125,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
