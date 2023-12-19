@@ -1,16 +1,9 @@
-# project
+Updated Version with Flutter 3.0
 
-A new Flutter project.
+Serenity is a Mental Health Care App which caters to people that are feeling down or dealing with any mental health issues. It especially helps people between the age of 15-25 unwind, who not only have a hectic schedule, but also have to deal with a lot of personal problems.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+New Things Added -
+- Google Sign-Up Option
+- Implemented Hive Storage
+- Mood Tracker
+- Major Front-End Changes
