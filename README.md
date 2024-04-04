@@ -7,3 +7,5 @@ New Things Added -
 - Implemented Hive Storage
 - Mood Tracker
 - Major Front-End Changes
+
+![Wireframe](https://github.com/brisingr24/Serenity_V2/assets/73464604/ebb9faab-2c27-4772-bd67-15128c067b39)
